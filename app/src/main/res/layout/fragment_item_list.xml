@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="com.example.sagar.moviesuccesspredictor.OneFragment"
+    android:weightSum="1"
+    android:layout_marginTop="70dp">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="181dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.95" />
+
+    <TextView
+        android:id="@+id/textViewa"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/imageView1"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/imageView1"
+        android:layout_toEndOf="@+id/textViewa" />
+
+</RelativeLayout>

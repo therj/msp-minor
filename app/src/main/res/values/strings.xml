@@ -1,0 +1,39 @@
+<resources>
+    <string name="share">Share</string>
+    <string name="about_us">About Us</string>
+    <string name="exit">Exit</string>
+    <string name="app_name">Movie Success Predictor</string>
+    <string name="info">
+        \t \t\t\tDeveloped for minor project
+            \n\n \t\t\t\t\t\t\t\t\tKec,Kalimati
+            \n\n \t\t \t\t\t\t\t\t\tVersion 1.0.0
+    </string>
+    <string name="enterinfo">Please Enter the Following Information </string>
+
+    <string name="actor1">Actor 1:</string>
+    <string name="actor2">Actor 2:</string>
+    <string name="actor3">Actor 3:</string>
+    <string name="actor4">Actor 4:</string>
+
+
+    <string name="actress1">Actress 1:</string>
+    <string name="actress2">Actress 2:</string>
+    <string name="actress3">Actress 3:</string>
+
+
+    <string name="Director">Director:</string>
+<string name="predict">Predict</string>
+    <string name="Producer">Producer:</string>
+    <string name="budjet">Movie Budget($):</string>
+    <string-array name="items">
+        <item>none</item>
+        <item>will be added later on</item>
+    </string-array>
+<string name="Genera">Genera</string>
+<string name="cash">Cash</string>
+    <array name="genera">
+        <item>Comedy</item>
+        <item>Romantic</item>
+        <item>Action</item>
+    </array>
+</resources>

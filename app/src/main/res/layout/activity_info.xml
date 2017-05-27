@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sagar.moviesuccesspredictor.InfoActivity">
+
+    <include
+        android:id="@+id/this_toolbar"
+        layout="@layout/tool_bar"/>
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/this_toolbar"
+        android:background="#ffff"
+        android:elevation="3dp"
+        android:paddingBottom="50dp"
+        android:paddingEnd="35dp"
+        android:paddingStart="50dp"
+        android:paddingTop="200dp"
+
+        android:text="@string/info"
+        android:textColor="#000000" />
+
+
+
+</RelativeLayout>
