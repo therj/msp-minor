@@ -3,11 +3,16 @@ package np.edu.keckist.msp;
 /**
  * Created by Sagar on 5/6/2017.
  */
+
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,20 +22,25 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
-public class TwoFragment extends Fragment{
+public class TwoFragment extends Fragment {
 
     //arrays oholding all the data
-    private String[] movie_name=new String[5];
-    private String[] image_url=new String[5];
-    private String[] release_date=new String[5];
-    private String[] prediction=new String[5];
+    private String[] movie_name = new String[5];
+    private String[] image_url = new String[5];
+    private String[] release_date = new String[5];
+    private String[] prediction = new String[5];
 
     GridView grid;
-
 
 
     public TwoFragment() {
@@ -51,14 +61,11 @@ public class TwoFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_two, container, false);
 
-       ConnectToServer connect= new ConnectToServer();
+        ConnectToServer connect = new ConnectToServer();
         connect.execute();
 
 
-
-        //ImageView imageView = (ImageView) view.findViewById(R.id.imageView1);
-
-        grid=(GridView)view.findViewById(R.id.gridview);
+        grid = (GridView) view.findViewById(R.id.gridview);
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,10 +75,10 @@ public class TwoFragment extends Fragment{
                 Intent intent = new Intent(getActivity(), ShowResult.class);
                 Bundle extras = new Bundle();
 
-                extras.putString("name",movie_name[position]);
-                extras.putString("image_url",image_url[position]);
-                extras.putString("release_date",release_date[position]);
-                extras.putString("prediciton",prediction[position]);
+                extras.putString("name", movie_name[position]);
+                extras.putString("image_url", image_url[position]);
+                extras.putString("release_date", release_date[position]);
+                extras.putString("prediciton", prediction[position]);
                 intent.putExtras(extras);
 
                 startActivity(intent);
@@ -92,9 +99,11 @@ public class TwoFragment extends Fragment{
         */
         return view;
     }
-    public class ConnectToServer extends AsyncTask<String,String,String> {
 
-        String url= "http://192.168.0.103:8080/msp/services/WebServiceForMSP/sendCurrentMovies";
+    public class ConnectToServer extends AsyncTask<String, String, String> {
+
+        String urll = "http://192.168.43.91:8080/msp/services/WebServiceForMSP/sendCurrentMovies";
+
         String returnS;
 
         @Override
@@ -105,9 +114,24 @@ public class TwoFragment extends Fragment{
         @Override
         protected String doInBackground(String... params) {
             //all code here runs in background thread
-            GetDataFromServer getdata=new GetDataFromServer();
+            GetDataFromServer getdata = new GetDataFromServer();
+
+            URL url = null;
             try {
-                returnS=getdata.getData(url);
+                url = new URL(urll);
+
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                if (urlConnection.getResponseCode() != 200) {
+                    return null;
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                returnS = getdata.getData(urll);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -117,38 +141,47 @@ public class TwoFragment extends Fragment{
         @Override
         protected void onPostExecute(String s) {
             //also has access to main theread
-            seperateAndStore(s);
 
-            CustomAdapter adapter = new CustomAdapter(getActivity(), movie_name, image_url,release_date);
+            if (s != null) {
+                seperateAndStore(getActivity(), s);
+
+                CustomAdapter adapter = new CustomAdapter(getActivity(), movie_name, image_url, release_date);
+
+                grid.setAdapter(adapter);
+                // adapter.updateMovies(movie_name);
+                adapter.notifyDataSetChanged();
+
+            }
+            CustomAdapter adapter = new CustomAdapter(getActivity(), movie_name, image_url, release_date);
 
             grid.setAdapter(adapter);
-           // adapter.updateMovies(movie_name);
-            adapter.notifyDataSetChanged();
-
 
 
         }
 
     }
 
-    private void seperateAndStore(String concatinated){
+    private void seperateAndStore(Context mContext, String concatinated) {
         //this method sepereates the concatinated string obtained from the server and stores the data into respective arraylists
 
         //splitting the  names,release_date,prediciton and image_url
-       //Regular Expressions are use to split
-        String[] split= concatinated.split("\\^");
+        //Regular Expressions are use to split
+        String[] split = concatinated.split("\\^");
 
         //again splitting the parts into individual elements
-        String[]names=split[0].split("\\*");
-        String[]url=split[1].split("\\*");
-        String[]release_date1=split[2].split("\\*");
-        String[]prediciton_local=split[3].split("\\*");
+        String[] names = split[0].split("\\*");
+        String[] url = split[1].split("\\*");
+        String[] release_date1 = split[2].split("\\*");
+        String[] prediciton_local = split[3].split("\\*");
 
-        movie_name=names;
-        image_url=url;
-        release_date=release_date1;
-        prediction=prediciton_local;
+        movie_name = names;
+        image_url = url;
+        release_date = release_date1;
+        prediction = prediciton_local;
+
 
     }
 
 }
+
+

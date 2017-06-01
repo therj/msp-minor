@@ -47,3 +47,6 @@ captures/
 
 #Disable MacOS custom attributes
 .DS_Store
+src/main/res/drawable/loading.png
+src/main/res/drawable/warning.png
+src/test/java/com/

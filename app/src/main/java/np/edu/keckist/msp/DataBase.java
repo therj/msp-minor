@@ -6,9 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Image;
 
-/**
- * Created by Sagar on 5/8/2017.
- */
+
 
 public class DataBase extends SQLiteOpenHelper {
     private  static  String DB_NAME="MovieData";

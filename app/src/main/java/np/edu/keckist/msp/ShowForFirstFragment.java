@@ -15,6 +15,7 @@ public class ShowForFirstFragment extends AppCompatActivity {
 
     String unformatted;
     Toolbar toolbar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -22,13 +23,13 @@ public class ShowForFirstFragment extends AppCompatActivity {
         setContentView(R.layout.show_one_fragment);
 
 
-        toolbar=(android.support.v7.widget.Toolbar) findViewById(R.id.this_toolbar);
+        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.this_toolbar);
         setSupportActionBar(toolbar);
 
         Bundle extras = getIntent().getExtras();
         unformatted = extras.getString("unsplitted");
 
-        TextView tv=(TextView) findViewById(R.id.textView7);
+        TextView tv = (TextView) findViewById(R.id.textView7);
         tv.setText(unformatted);
 
     }

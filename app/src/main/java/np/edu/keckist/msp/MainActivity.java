@@ -35,7 +35,7 @@ Toolbar toolbar,toolbar1;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar=(android.support.v7.widget.Toolbar) findViewById(R.id.this_toolbar);
+        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.this_toolbar);
         setSupportActionBar(toolbar);
 
 

@@ -19,8 +19,8 @@ import java.net.URL;
 public class GetDataFromServer {
 
 
-    public String getData(String uri) throws IOException{
-      //StringBuilder sb= new StringBuilder();
+    public String getData(String uri) throws IOException {
+        //StringBuilder sb= new StringBuilder();
         String returned;
         String parsedxml;
         URL url = new URL(uri);
@@ -35,39 +35,37 @@ public class GetDataFromServer {
 
             int statusCode = urlConnection.getResponseCode();
 
-            InputStream in ;
+            InputStream in;
 
             if (statusCode >= 200 && statusCode < 400) {
                 // Create an InputStream in order to extract the response object
-             in = new BufferedInputStream(urlConnection.getInputStream()); }
-            else {
-                in = new BufferedInputStream(urlConnection.getErrorStream());}
+                in = new BufferedInputStream(urlConnection.getInputStream());
+            } else {
+                in = new BufferedInputStream(urlConnection.getErrorStream());
+            }
 
 
-            returned   = readStream(in);
-            ParseXML pm=new ParseXML();
+            returned = readStream(in);
+            ParseXML pm = new ParseXML();
 
-            parsedxml=pm.parse(returned);
+            parsedxml = pm.parse(returned);
         } finally {
             //regardkless of success or faliure we disconnect the connection
             urlConnection.disconnect();
         }
 
 
-
-        return parsedxml ;
+        return parsedxml;
 
     }
-    private void writeStream(OutputStream out,String textTosend) throws IOException{
 
-        out.write(textTosend.getBytes());
-        out.flush();
-    }
-    private String readStream(InputStream in) throws IOException{
-        BufferedReader br= new BufferedReader(new InputStreamReader(in));
+
+
+    private String readStream(InputStream in) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
         StringBuilder result = new StringBuilder();
         String line;
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             result.append(line);
         }
         return (result.toString());

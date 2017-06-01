@@ -1,6 +1,11 @@
 package np.edu.keckist.msp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +15,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +26,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter {
 
-    //private ArrayList <String> webx;
+
     private Context mContext;
     private String[] web;//text
     private final String[] Imagelink;//image
@@ -30,7 +38,6 @@ public class CustomAdapter extends BaseAdapter {
         this.web = web;
         this.release_date = release_date;
     }
-
 
     @Override
     public int getCount() {
@@ -96,9 +103,21 @@ public class CustomAdapter extends BaseAdapter {
 
         ImageView imageView = (ImageView) convertView
                 .findViewById(R.id.imageView1);
+
+
+        /*File imageFile = new File(Environment.getExternalStorageDirectory().getPath()+"/"+ "sagar");
+        Bitmap bitmap = null;
+        try {
+            bitmap = BitmapFactory.decodeStream(new FileInputStream(imageFile));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        imageView.setImageBitmap(bitmap);
+
+*/
         Picasso.with(mContext)
                 .load(Imagelink[position]).fit().
-                placeholder(R.drawable.aa).error(R.drawable.ab)
+                placeholder(R.drawable.loading).error(R.drawable.warning)
                 .into(imageView);
         return convertView;
 

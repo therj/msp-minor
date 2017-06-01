@@ -5,11 +5,12 @@ package np.edu.keckist.msp;
  */
 
 public class ParseXML {
-   private String str="";
-char c;
-    public  String parse(String received_xml){
-         int x=0;   //removing unncessary xml data
-        for(int i=0;i<received_xml.length();i++) {
+    private String str = "";
+    char c;
+
+    public String parse(String received_xml) {
+        int x = 0;   //removing unncessary xml data
+        for (int i = 0; i < received_xml.length(); i++) {
             c = received_xml.charAt(i);
             if (c == '>') {
                 x++;
@@ -29,7 +30,7 @@ char c;
         }
 
 
-    return str;
-}
+        return str;
+    }
 
 }

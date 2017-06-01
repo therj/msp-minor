@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
-        android:layout_height="181dp"
+        android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.95" />
 
@@ -20,9 +20,10 @@
         android:id="@+id/textViewa"
         android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:background="#fff"
+        android:background="@color/colorPrimary"
         android:gravity="center_vertical"
         android:textSize="20sp"
+
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/colorPrimaryDark"
@@ -32,12 +33,16 @@
         android:id="@+id/textView4"
         android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:background="#fff"
+        android:background="@color/colorPrimary"
         android:textSize="20sp"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/colorPrimaryDark"
         android:layout_below="@+id/imageView1"
-        android:layout_toEndOf="@+id/textViewa" />
+        android:layout_toEndOf="@+id/textViewa"
+        android:layout_alignBottom="@+id/textViewa"
+        android:layout_alignTop="@+id/textViewa"
+
+        />
 
 </RelativeLayout>

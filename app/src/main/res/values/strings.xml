@@ -2,11 +2,11 @@
     <string name="share">Share</string>
     <string name="about_us">About Us</string>
     <string name="exit">Exit</string>
-    <string name="app_name">Movie Success Predictor</string>
+    <string name="app_name">Movie Predictor</string>
     <string name="info">
-        \t \t\t\tDeveloped for minor project
-            \n\n \t\t\t\t\t\t\t\t\tKec,Kalimati
-            \n\n \t\t \t\t\t\t\t\t\tVersion 1.0.0
+        \t \t\t\tDeveloped for Minor Project
+            \n\n \t\t\t\t\t\t\t\t\tKec, Kalimati
+            \n\n  \t\t\t\t\t\t\tv0.0.2 alpha unreleased.
     </string>
     <string name="enterinfo">Please Enter the Following Information </string>
 
@@ -26,7 +26,7 @@
     <string name="Producer">Producer:</string>
     <string name="budjet">Movie Budget($):</string>
     <string-array name="items">
-        <item>none</item>
+        <item>none</item>z
         <item>will be added later on</item>
     </string-array>
 <string name="Genera">Genera</string>
